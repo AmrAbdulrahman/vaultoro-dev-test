@@ -16,6 +16,10 @@ import Documents from '../../pages/Documents/Documents';
 import NewDocument from '../../pages/NewDocument/NewDocument';
 import ViewDocument from '../../pages/ViewDocument/ViewDocument';
 import EditDocument from '../../pages/EditDocument/EditDocument';
+import GIFs from '../../pages/GIFs/GIFs';
+import NewGIF from '../../pages/NewGIF/NewGIF';
+import ViewGIF from '../../pages/ViewGIF/ViewGIF';
+import EditGIF from '../../pages/EditGIF/EditGIF';
 import Signup from '../../pages/Signup/Signup';
 import Login from '../../pages/Login/Login';
 import Logout from '../../pages/Logout/Logout';
@@ -53,6 +57,10 @@ const App = props => (
           <Authenticated exact path="/documents/new" component={NewDocument} {...props} />
           <Authenticated exact path="/documents/:_id" component={ViewDocument} {...props} />
           <Authenticated exact path="/documents/:_id/edit" component={EditDocument} {...props} />
+          <Authenticated exact path="/gifs" component={GIFs} {...props} />
+          <Authenticated exact path="/gifs/new" component={NewGIF} {...props} />
+          <Authenticated exact path="/gifs/:_id" component={ViewGIF} {...props} />
+          <Authenticated exact path="/gifs/:_id/edit" component={EditGIF} {...props} />
           <Authenticated exact path="/profile" component={Profile} {...props} />
           <Public path="/signup" component={Signup} {...props} />
           <Public path="/login" component={Login} {...props} />
