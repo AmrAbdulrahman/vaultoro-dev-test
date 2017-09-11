@@ -16,16 +16,18 @@ class GIFEditor extends React.Component {
         title: {
           required: true,
         },
-        body: {
+        url: {
           required: true,
+          url: true
         },
       },
       messages: {
         title: {
           required: 'Need a title in here, Seuss.',
         },
-        body: {
-          required: 'This thneeds a body, please.',
+        url: {
+          required: `What's a GIF without url? fill in a url, please. now.`,
+          url: 'Must be a valid URL.'
         },
       },
       submitHandler() { component.handleSubmit(); },
@@ -38,7 +40,7 @@ class GIFEditor extends React.Component {
     const methodToCall = existingGIF ? 'gifs.update' : 'gifs.insert';
     const gif = {
       title: this.title.value.trim(),
-      body: this.body.value.trim(),
+      url: this.url.value.trim(),
     };
 
     if (existingGIF) gif._id = existingGIF;
@@ -71,13 +73,14 @@ class GIFEditor extends React.Component {
         />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Body</ControlLabel>
-        <textarea
+        <ControlLabel>Url</ControlLabel>
+        <input
+          type="text"
           className="form-control"
-          name="body"
-          ref={body => (this.body = body)}
-          defaultValue={gif && gif.body}
-          placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
+          name="url"
+          ref={url => (this.url = url)}
+          defaultValue={gif && gif.url}
+          placeholder="GIF URL... (try giphy.com)"
         />
       </FormGroup>
       <Button type="submit" bsStyle="success">
@@ -88,7 +91,7 @@ class GIFEditor extends React.Component {
 }
 
 GIFEditor.defaultProps = {
-  gif: { title: '', body: '' },
+  gif: { title: '', url: '' },
 };
 
 GIFEditor.propTypes = {

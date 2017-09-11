@@ -34,7 +34,7 @@ const renderGIF = (gif, match, history) => (gif ? (
         </ButtonGroup>
       </ButtonToolbar>
     </div>
-    { gif && gif.body }
+    { gif && gif.url }
   </div>
 ) : <NotFound />);
 

@@ -7,7 +7,7 @@ Meteor.methods({
   'gifs.insert': function gifsInsert(gif) {
     check(gif, {
       title: String,
-      body: String,
+      url: String,
     });
 
     try {
@@ -20,7 +20,7 @@ Meteor.methods({
     check(gif, {
       _id: String,
       title: String,
-      body: String,
+      url: String,
     });
 
     try {

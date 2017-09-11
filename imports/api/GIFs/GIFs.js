@@ -40,9 +40,9 @@ GIFs.schema = new SimpleSchema({
     type: String,
     label: 'The title of the GIF.',
   },
-  body: {
+  url: {
     type: String,
-    label: 'The body of the GIF.',
+    label: 'The url of the GIF.',
   },
 });
 
