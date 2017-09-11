@@ -11,6 +11,10 @@
   img {
     width: 100px;
     height: auto;
+
+    &.funny-giph {
+      width: 400px;
+    }
   }
 
   h1 {
@@ -33,6 +37,11 @@
     .btn {
       border: none;
     }
+  }
+
+  .image-wrapper {
+    display: block;
+    margin-top: 15px;
   }
 
   footer {

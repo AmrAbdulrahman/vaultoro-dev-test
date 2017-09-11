@@ -5,10 +5,19 @@ import './Index.scss';
 
 const Index = () => (
   <div className="Index">
-    <img
-      src="https://s3-us-west-2.amazonaws.com/cleverbeagle-assets/graphics/email-icon.png"
-      alt="Clever Beagle"
-    />
+    <div className="image-wrapper">
+      <img
+        className="funny-giph"
+        src="https://media.giphy.com/media/PvvSfSDFoAL5e/giphy.gif"
+        alt="Clever Beagle"
+      />
+    </div>
+    <div className="image-wrapper">
+      <img
+        src="https://s3-us-west-2.amazonaws.com/cleverbeagle-assets/graphics/email-icon.png"
+        alt="Clever Beagle"
+      />
+    </div>
     <h1>Pup</h1>
     <p>A boilerplate for products.</p>
     <div>
