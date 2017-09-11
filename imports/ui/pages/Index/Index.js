@@ -1,14 +1,21 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { random } from 'lodash';
+import giphsCollection from './giphs-collection';
 
 import './Index.scss';
+
+const randomGiph = () => {
+  const randomIndex = random(0, giphsCollection.length - 1);
+  return giphsCollection[randomIndex];
+};
 
 const Index = () => (
   <div className="Index">
     <div className="image-wrapper">
       <img
         className="funny-giph"
-        src="https://media.giphy.com/media/PvvSfSDFoAL5e/giphy.gif"
+        src={randomGiph()}
         alt="Clever Beagle"
       />
     </div>
