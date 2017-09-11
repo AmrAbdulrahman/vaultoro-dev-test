@@ -7,6 +7,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import GIFs from '../../../api/GIFs/GIFs';
 import NotFound from '../NotFound/NotFound';
 import Loading from '../../components/Loading/Loading';
+import GIFPreviewer from '../../components/GIFPreviewer/GIFPreviewer';
 
 const handleRemove = (GIFId, history) => {
   if (confirm('Are you sure? This is permanent!')) {
@@ -35,6 +36,7 @@ const renderGIF = (gif, match, history) => (gif ? (
       </ButtonToolbar>
     </div>
     { gif && gif.url }
+    <GIFPreviewer url={gif ? gif.url : ''} />
   </div>
 ) : <NotFound />);
 

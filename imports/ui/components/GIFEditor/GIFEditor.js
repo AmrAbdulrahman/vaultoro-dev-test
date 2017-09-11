@@ -6,8 +6,18 @@ import { FormGroup, ControlLabel, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import validate from '../../../modules/validate';
+import GIFPreviewer from '../GIFPreviewer/GIFPreviewer';
+import { get } from 'lodash';
 
 class GIFEditor extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      url: get(this.props, 'gif.url', ''),
+    };
+  }
+
   componentDidMount() {
     const component = this;
 
@@ -57,6 +67,12 @@ class GIFEditor extends React.Component {
     });
   }
 
+  onUrlChange(event) {
+    this.setState({
+      url: event.target.value,
+    });
+  }
+
   render() {
     const { gif } = this.props;
 
@@ -81,8 +97,10 @@ class GIFEditor extends React.Component {
           ref={url => (this.url = url)}
           defaultValue={gif && gif.url}
           placeholder="GIF URL... (try giphy.com)"
+          onChange={(e) => this.onUrlChange(e)}
         />
       </FormGroup>
+      <GIFPreviewer url={this.state.url} />
       <Button type="submit" bsStyle="success">
         {gif && gif._id ? 'Save Changes' : 'Add GIF'}
       </Button>

@@ -1,3 +1,9 @@
-.GIFs table tbody tr td {
-  vertical-align: middle;
+.GIFs {
+  table tbody tr td {
+    vertical-align: middle;
+  }
+
+  .previewCol {
+    width: 150px;
+  }
 }

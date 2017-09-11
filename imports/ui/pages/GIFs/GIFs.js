@@ -8,6 +8,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
 import GIFsCollection from '../../../api/GIFs/GIFs';
 import Loading from '../../components/Loading/Loading';
+import GIFPreviewer from '../../components/GIFPreviewer/GIFPreviewer';
 
 import './GIFs.scss';
 
@@ -35,16 +36,20 @@ const GIFs = ({ loading, gifs, match, history }) => (!loading ? (
           <th>Title</th>
           <th>Last Updated</th>
           <th>Created</th>
+          <th>Preview</th>
           <th />
           <th />
         </tr>
       </thead>
       <tbody>
-        {gifs.map(({ _id, title, createdAt, updatedAt }) => (
+        {gifs.map(({ _id, title, url, createdAt, updatedAt }) => (
           <tr key={_id}>
             <td>{title}</td>
             <td>{timeago(updatedAt)}</td>
             <td>{monthDayYearAtTime(createdAt)}</td>
+            <td className='previewCol'>
+              <GIFPreviewer url={url} />
+            </td>
             <td>
               <Button
                 bsStyle="primary"
