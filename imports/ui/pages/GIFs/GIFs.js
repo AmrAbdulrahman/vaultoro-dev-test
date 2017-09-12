@@ -9,6 +9,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import GIFsCollection from '../../../api/GIFs/GIFs';
 import Loading from '../../components/Loading/Loading';
 import GIFPreviewer from '../../components/GIFPreviewer/GIFPreviewer';
+import Rating from '../../components/Rating/Rating';
 
 import './GIFs.scss';
 
@@ -51,7 +52,9 @@ const GIFs = ({ loading, gifs, match, history }) => (!loading ? (
             <td className='previewCol'>
               <GIFPreviewer url={url} />
             </td>
-            <td>{rating || 'Not rated'}</td>
+            <td>
+              <Rating value={rating} />
+            </td>
             <td>
               <Button
                 bsStyle="primary"

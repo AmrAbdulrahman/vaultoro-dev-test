@@ -8,6 +8,7 @@ import GIFs from '../../../api/GIFs/GIFs';
 import NotFound from '../NotFound/NotFound';
 import Loading from '../../components/Loading/Loading';
 import GIFPreviewer from '../../components/GIFPreviewer/GIFPreviewer';
+import Rating from '../../components/Rating/Rating';
 
 const handleRemove = (GIFId, history) => {
   if (confirm('Are you sure? This is permanent!')) {
@@ -36,7 +37,7 @@ const renderGIF = (gif, match, history) => (gif ? (
       </ButtonToolbar>
     </div>
     <div>
-      <label>Rating</label>: { (gif && gif.rating) || 'Not set' }
+      <label>Rating</label>: <Rating value={gif.rating} />
     </div>
     <div>
       <label>Url</label>: {gif && gif.url}
