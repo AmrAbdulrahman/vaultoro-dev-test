@@ -28,8 +28,13 @@ class GIFEditor extends React.Component {
         },
         url: {
           required: true,
-          url: true
+          url: true,
         },
+        rating: {
+          number: true,
+          min: 0,
+          max: 5,
+        }
       },
       messages: {
         title: {
@@ -39,9 +44,24 @@ class GIFEditor extends React.Component {
           required: `What's a GIF without url? fill in a url, please. now.`,
           url: 'Must be a valid URL.'
         },
+        rating: {
+          number: 'Rating must be a number',
+          min: 'Minimum rating value is 0',
+          max: 'Maximum rating value is 5',
+        },
       },
       submitHandler() { component.handleSubmit(); },
     });
+  }
+
+  getRatingValue() {
+    const intValue = parseInt(this.rating.value, 10);
+
+    if (isNaN(intValue) === true) {
+      return 0;
+    }
+
+    return intValue;
   }
 
   handleSubmit() {
@@ -51,6 +71,7 @@ class GIFEditor extends React.Component {
     const gif = {
       title: this.title.value.trim(),
       url: this.url.value.trim(),
+      rating: this.getRatingValue(),
     };
 
     if (existingGIF) gif._id = existingGIF;
@@ -100,6 +121,17 @@ class GIFEditor extends React.Component {
           onChange={(e) => this.onUrlChange(e)}
         />
       </FormGroup>
+      <FormGroup>
+        <ControlLabel>Rating</ControlLabel>
+        <input
+          type="text"
+          className="form-control"
+          name="rating"
+          ref={rating => (this.rating = rating)}
+          defaultValue={gif && gif.rating}
+          placeholder="GIF Rating... (0-5)"
+        />
+      </FormGroup>
       <GIFPreviewer url={this.state.url} />
       <Button type="submit" bsStyle="success">
         {gif && gif._id ? 'Save Changes' : 'Add GIF'}
@@ -109,12 +141,13 @@ class GIFEditor extends React.Component {
 }
 
 GIFEditor.defaultProps = {
-  gif: { title: '', url: '' },
+  gif: { title: '', url: '', rating: 0 },
 };
 
 GIFEditor.propTypes = {
   gif: PropTypes.object,
   history: PropTypes.object.isRequired,
+  rating: PropTypes.number,
 };
 
 export default GIFEditor;

@@ -8,6 +8,7 @@ Meteor.methods({
     check(gif, {
       title: String,
       url: String,
+      rating: Number
     });
 
     try {
@@ -21,6 +22,7 @@ Meteor.methods({
       _id: String,
       title: String,
       url: String,
+      rating: Number,
     });
 
     try {

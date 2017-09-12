@@ -35,7 +35,12 @@ const renderGIF = (gif, match, history) => (gif ? (
         </ButtonGroup>
       </ButtonToolbar>
     </div>
-    { gif && gif.url }
+    <div>
+      <label>Rating</label>: { (gif && gif.rating) || 'Not set' }
+    </div>
+    <div>
+      <label>Url</label>: {gif && gif.url}
+    </div>
     <GIFPreviewer url={gif ? gif.url : ''} />
   </div>
 ) : <NotFound />);

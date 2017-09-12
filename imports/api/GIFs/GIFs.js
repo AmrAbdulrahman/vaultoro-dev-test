@@ -44,6 +44,12 @@ GIFs.schema = new SimpleSchema({
     type: String,
     label: 'The url of the GIF.',
   },
+  rating: {
+    type: Number,
+    label: 'The rate of the GIF.',
+    min: 0,
+    max: 5,
+  },
 });
 
 GIFs.attachSchema(GIFs.schema);
