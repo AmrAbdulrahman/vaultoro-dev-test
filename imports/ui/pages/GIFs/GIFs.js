@@ -37,12 +37,13 @@ const GIFs = ({ loading, gifs, match, history }) => (!loading ? (
           <th>Last Updated</th>
           <th>Created</th>
           <th>Preview</th>
+          <th>Rating</th>
           <th />
           <th />
         </tr>
       </thead>
       <tbody>
-        {gifs.map(({ _id, title, url, createdAt, updatedAt }) => (
+        {gifs.map(({ _id, title, url, rating, createdAt, updatedAt }) => (
           <tr key={_id}>
             <td>{title}</td>
             <td>{timeago(updatedAt)}</td>
@@ -50,6 +51,7 @@ const GIFs = ({ loading, gifs, match, history }) => (!loading ? (
             <td className='previewCol'>
               <GIFPreviewer url={url} />
             </td>
+            <td>{rating || 'Not rated'}</td>
             <td>
               <Button
                 bsStyle="primary"
