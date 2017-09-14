@@ -18,6 +18,7 @@
         "secret": "",
         "loginStyle": "popup"
       }
-    }
+    },
+    "VIDEO_URL_ENCRYPTION_KEY": "1234567890abcdefghijklmnopqrstuv"
   }
 }

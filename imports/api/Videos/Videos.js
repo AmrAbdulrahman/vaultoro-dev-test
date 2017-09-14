@@ -2,6 +2,7 @@
 
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
+import EncryptionHelper from '../../modules/encryption-helper';
 
 const Videos = new Mongo.Collection('Videos');
 
@@ -43,6 +44,15 @@ Videos.schema = new SimpleSchema({
   url: {
     type: String,
     label: 'The url of the video.',
+    autoValue() {
+      // don't encrypt urls on the client side.
+      if (Meteor.isClient === true) {
+        return this.value;
+      }
+
+      // encrypt urls before saving
+      return EncryptionHelper.encrypt(this.value);
+    }
   },
   rating: {
     type: Number,
