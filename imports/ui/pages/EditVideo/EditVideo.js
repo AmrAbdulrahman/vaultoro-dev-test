@@ -23,11 +23,11 @@ EditVideo.propTypes = {
 };
 
 export default createContainer(({ match }) => {
-  const VideoId = match.params._id;
-  const subscription = Meteor.subscribe('videos.view', VideoId);
+  const videoId = match.params._id;
+  const subscription = Meteor.subscribe('videos.view', videoId);
 
   return {
     loading: !subscription.ready(),
-    video: Videos.findOne(VideoId),
+    video: Videos.findOne(videoId),
   };
 }, EditVideo);
